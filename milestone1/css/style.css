@@ -36,6 +36,10 @@
     background-color: red;
 }
 
+li {
+    list-style: none;
+}
+
 /* side-navbar */
 
 #side-navbar {
@@ -47,6 +51,32 @@
 .notifiche {
     height: 50px;
     background-color: #8EDAFC;
+}
+
+.contact-img {
+    width: 10%;
+}
+
+.contact-img img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.contact-content {
+    padding: 5px 10px;
+}
+
+.contact-time {
+    margin-left: auto;
+}
+
+.contact-info {
+    padding-left: 20px;
+}
+
+.contact-time, .contact-access {
+    font-size: 10px;
+    font-weight: 100;
 }
 
 /* main-section */
