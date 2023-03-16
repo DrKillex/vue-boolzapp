@@ -16,17 +16,43 @@
         <!-- app -->
         <div id="app" vcloak class="d-flex">
             <!-- side navbar -->
-            <nav id="side-navbar">
+            <nav id="side-navbar" class="d-flex">
                 <!-- side-header -->
-                <header class="header" id="header-side">
-
+                <header class="header d-flex" id="header-side">
+                    <div class="contact-img">
+                        <img :src="user.avatar" alt="user.name">
+                    </div>                            
+                    <div class="contact-info">
+                        <div class="contact-name">{{user.name}}</div>
+                    </div>
+                    <div class="contact-time d-flex header-btns">
+                        <div>
+                            <i class="fa-solid fa-circle-notch"></i>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-message"></i>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
                 </header>
                 <!-- /side-header -->
-                <div class="notifiche">
-
+                <div class="notifiche d-flex">
+                    <div class="bell-icon d-flex justify-center align-items-center">
+                        <i class="fa-solid fa-bell-slash"></i>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-name">Ricevi notifiche di nuovi messaggi</div>
+                        <a href="#" class="contact-access">Ultimo messaggio inviato</a>
+                    </div>
                 </div>
-                <div>cerca</div>
-                <ul class="contacts-list">
+                <div id="search">
+                    <label for="search-bar"><i class="fa-solid fa-magnifying-glass"></i></label>
+                    <input type="text" placeholder="Cerca o inizia una chat" id="search-bar">
+                </div>
+                <ul class="contacts-list d-flex">
+                    <!-- ciclo vfor elemento lista -->
                     <li v-for="(contact, index) in contacts">
                         <div class="d-flex contact-content">
                             <div class="contact-img">
@@ -41,6 +67,7 @@
                             </div>
                         </div>
                     </li>
+                    <!-- /ciclo vfor elemento lista -->
                 </ul>
             </nav>
             <!-- /side navbar -->
