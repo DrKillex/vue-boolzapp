@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- myCSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- container-backgrund -->
+    <div id="container-bg">
+        <!-- app -->
+        <div id="app" vcloak class="d-flex">
+            <!-- side navbar -->
+            <nav id="side-navbar">
+                <!-- side-header -->
+                <header class="header" id="header-side">
+
+                </header>
+                <!-- /side-header -->
+                <div class="notifiche">
+
+                </div>
+                <div>cerca</div>
+                <ul class="contatti">
+                    <li v-for="(contact, index) in contacts">
+                        <div>
+                            <div>
+                                <img :src="contact.avatar" alt="contact.name">
+                            </div>                            
+                            <div>
+                                <div>{{contact.name}}</div>
+                                <div>Ultimo messaggio inviato</div>
+                            </div>
+                            <div>
+                                12.00
+                            </div>
+                            
+
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /side navbar -->
+            <!-- main section -->
+            <main id="main-section">
+
+            </main>
+            <!-- /main section -->
+        </div>
+        <!-- /app -->
+    </div>
+    <!-- /container-backgrund -->
+    <!-- vueJS -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- myJS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
