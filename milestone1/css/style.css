@@ -16,6 +16,10 @@
     font-family: 'Lato', sans-serif;
 }
 
+.notifiche a, #search-bar, #text-bar{
+    color: #55758e;
+}
+
 /* common */
 
 .d-flex {
@@ -58,6 +62,11 @@ li {
     background-color: #e9ebeb;
 }
 
+i {
+    font-size: 20px;
+    color: #b1b1b1;
+}
+
 /* side-navbar */
 
 #side-navbar {
@@ -70,7 +79,7 @@ li {
 .notifiche {
     background-color: #8EDAFC;
     align-items: center;
-    padding: 5px 10px;
+    padding: 15px 10px;
 }
 
 .contact-img {
@@ -97,12 +106,13 @@ li {
 }
 
 .contact-time, .contact-access {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 300;
 }
 
 .header-btns {
-    gap: 10px;
+    gap: 20px;
+    padding-right: 20px;
 }
 
 .bell-icon {
@@ -110,7 +120,11 @@ li {
     height: 35px;
     border-radius: 50%;
     background-color: white;
+}
+
+.bell-icon i {
     color: #8EDAFC;
+    font-size: 16px;
 }
 
 .contacts-list {
@@ -126,9 +140,7 @@ li {
 }
 
 .search-bar-div {
-    width: 80%;
-    padding: 5px 0;
-    
+    width: 80%;   
 }
 
 .search-label-div {
@@ -137,10 +149,17 @@ li {
     background-color: white;
 }
 
+.search-label-div i {
+    font-size: 14px;
+}
+
 #search-bar {
+    padding: 5px;
+}
+
+#search-bar, #text-bar {
     width: 100%;
     border: none;
-    height: 20px;
 }
 /* main-section */
 
@@ -160,14 +179,14 @@ li {
     height: 100%;
     width: 80%;
     margin: 0 auto;
-    padding: 40px;
+    padding: 40px 0;
     gap: 10px;
     flex-direction: column;
 }
 
 .message-box {
     background-color: aqua;
-    width: 280px;
+    width: 300px;
     border-radius: 10px;
 }
 
@@ -192,6 +211,20 @@ li {
 }
 
 #footer-main{
-    height: 40px;
-    background-color: aqua;
+    padding: 10px 0;
+    background-color: #f3eeea;
+    justify-content: space-between;
+}
+
+.emoji {
+    margin-left: 30px;
+}
+
+.microphone {
+    margin-right: 30px;
+}
+
+#text-bar {
+    padding: 20px;
+    border-radius: 10px;
 }
