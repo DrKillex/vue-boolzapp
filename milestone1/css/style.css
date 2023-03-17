@@ -10,6 +10,12 @@
     display: none;
 }
 
+/* typo */
+
+#app *:not(i) {
+    font-family: 'Lato', sans-serif;
+}
+
 /* common */
 
 .d-flex {
@@ -34,7 +40,7 @@
 #app {
     width: 100%;
     height: 100%;
-    max-width: 1000px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -46,6 +52,10 @@
 
 li {
     list-style: none;
+}
+
+.active-chat {
+    background-color: #e9ebeb;
 }
 
 /* side-navbar */
@@ -64,12 +74,14 @@ li {
 }
 
 .contact-img {
-    width: 10%;
+    width: 50px;
+    height: 50px;
 }
 
 .contact-img img {
     width: 100%;
     border-radius: 50%;
+    object-fit: contain;
 }
 
 .contact-content {
@@ -86,7 +98,7 @@ li {
 
 .contact-time, .contact-access {
     font-size: 10px;
-    font-weight: 100;
+    font-weight: 300;
 }
 
 .header-btns {
@@ -109,15 +121,26 @@ li {
 }
 
 #search {
-    padding: 3px 10px;
+    padding: 10px 15px;
+    background-color: #fafafa;
+}
+
+.search-bar-div {
+    width: 80%;
+    padding: 5px 0;
+    
+}
+
+.search-label-div {
+    width: 10%;
+    padding: 5px 10px;
+    background-color: white;
 }
 
 #search-bar {
-    margin-left: 35px;
-    width: 80%;
-    outline: none;
+    width: 100%;
     border: none;
-
+    height: 20px;
 }
 /* main-section */
 
@@ -125,4 +148,5 @@ li {
     background-color: pink;
     height: 100%;
     width: 65%;
+    flex-direction: column;
 }

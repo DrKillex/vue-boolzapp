@@ -6,6 +6,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            currentChat: 0,
             user: {
                 name: 'Sofia',
                 avatar: '../img/avatar_io.jpg',

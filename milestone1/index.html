@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- googlefonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- myCSS -->
@@ -47,13 +51,18 @@
                         <a href="#" class="contact-access">Ultimo messaggio inviato</a>
                     </div>
                 </div>
-                <div id="search">
-                    <label for="search-bar"><i class="fa-solid fa-magnifying-glass"></i></label>
-                    <input type="text" placeholder="Cerca o inizia una chat" id="search-bar">
+                <div id="search" class="d-flex">
+                    <div class="search-label-div">
+                        <label for="search-bar"><i class="fa-solid fa-magnifying-glass"></i></label>
+                    </div>
+                    <div class="search-bar-div d-flex">
+                        <input type="text" placeholder="Cerca o inizia una chat" id="search-bar">
+                    </div>
+                    
                 </div>
                 <ul class="contacts-list d-flex">
                     <!-- ciclo vfor elemento lista -->
-                    <li v-for="(contact, index) in contacts">
+                    <li v-for="(contact, index) in contacts" :class="{'active-chat' : currentChat===index}">
                         <div class="d-flex contact-content">
                             <div class="contact-img">
                                 <img :src="contact.avatar" alt="contact.name">
@@ -72,8 +81,29 @@
             </nav>
             <!-- /side navbar -->
             <!-- main section -->
-            <main id="main-section">
-
+            <main id="main-section" class="d-flex">
+                <!-- main-header -->
+                <header class="header d-flex" id="header-side">
+                    <div class="contact-img">
+                        <img :src="contacts[currentChat].avatar" alt="contacts[currentChat].name">
+                    </div>                            
+                    <div class="contact-info">
+                        <div class="contact-name">{{contacts[currentChat].name}}</div>
+                        <div class="contact-access">Ultimo messaggio inviato</div>
+                    </div>
+                    <div class="contact-time d-flex header-btns">
+                        <div>
+                            <i class="fa-solid fa-circle-notch"></i>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-message"></i>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+                </header>
+                <!-- /main-header -->
             </main>
             <!-- /main section -->
         </div>
