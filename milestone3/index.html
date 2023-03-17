@@ -56,13 +56,13 @@
                         <label for="search-bar"><i class="fa-solid fa-magnifying-glass"></i></label>
                     </div>
                     <div class="search-bar-div d-flex">
-                        <input type="text" placeholder="Cerca o inizia una chat" id="search-bar">
+                        <input type="text" placeholder="Cerca o inizia una chat" id="search-bar" v-model="searchText" @keyup="search">
                     </div>
                     
                 </div>
                 <ul class="contacts-list d-flex">
                     <!-- ciclo vfor elemento lista -->
-                    <li v-for="(contact, index) in contacts" :class="{'active-chat' : currentChat===index}"  @click="activeChat(index)">
+                    <li v-for="(contact, index) in search()" :class="{'active-chat' : currentChat===index}" @click="activeChat(index)">
                         <div class="d-flex contact-content">
                             <div class="contact-img">
                                 <img :src="contact.avatar" alt="contact.name">
@@ -85,10 +85,10 @@
                 <!-- main-header -->
                 <header class="header d-flex" id="header-main">
                     <div class="contact-img">
-                        <img :src="contacts[currentChat].avatar" alt="contacts[currentChat].name">
+                        <img :src="search()[currentChat].avatar" alt="search()[currentChat].name">
                     </div>                            
                     <div class="contact-info">
-                        <div class="contact-name">{{contacts[currentChat].name}}</div>
+                        <div class="contact-name">{{search()[currentChat].name}}</div>
                         <div class="contact-access">Ultimo messaggio inviato</div>
                     </div>
                     <div class="contact-time d-flex header-btns">
@@ -107,7 +107,7 @@
                 <!-- main-section-central-section -->
                 <section id="central-section">
                     <div id="central-section-container" class="d-flex">
-                        <div class="message-box d-flex" v-for="(item, index) in contacts[currentChat].messages" :class="item.status">
+                        <div class="message-box d-flex" v-for="(item, index) in search()[currentChat].messages" :class="item.status">
                             <p class="message-txt">{{item.message}}</p>
                             <div class="message-time">*placeholder*</div>
                         </div>

@@ -6,6 +6,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            searchText: '',
             messageText: '',
             currentChat: 0,
             user: {
@@ -185,12 +186,19 @@ createApp({
         },
         sendMessage(){
             if(this.messageText.trim() !== ''){
-                this.contacts[this.currentChat].messages.push({date: '10/01/2020 15:51:00', message: this.messageText, status: 'sent'})
+                this.search()[this.currentChat].messages.push({date: '10/01/2020 15:51:00', message: this.messageText, status: 'sent'})
                 this.messageText = ''
             }
             setTimeout(() => {
-                this.contacts[this.currentChat].messages.push({date: '10/01/2020 15:51:00', message: 'ok', status: 'received'})
-            }, 3000);
+                this.search()[this.currentChat].messages.push({date: '10/01/2020 15:51:00', message: 'ok', status: 'received'})
+            }, 1000);
         },
+        search(){            
+            if(this.searchText.trim() !== ''){
+                return this.contacts.filter(contact => contact.name.toLowerCase().includes(this.searchText.toLowerCase()))
+            } else {
+                return this.contacts
+            }
+        }
     },
 }).mount('#app')
