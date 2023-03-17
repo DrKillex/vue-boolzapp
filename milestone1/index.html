@@ -83,7 +83,7 @@
             <!-- main section -->
             <main id="main-section" class="d-flex">
                 <!-- main-header -->
-                <header class="header d-flex" id="header-side">
+                <header class="header d-flex" id="header-main">
                     <div class="contact-img">
                         <img :src="contacts[currentChat].avatar" alt="contacts[currentChat].name">
                     </div>                            
@@ -104,6 +104,21 @@
                     </div>
                 </header>
                 <!-- /main-header -->
+                <!-- main-section-central-section -->
+                <section id="central-section">
+                    <div id="central-section-container" class="d-flex">
+                        <div class="message-box d-flex" v-for="(item, index) in contacts[currentChat].messages" :class="item.status">
+                            <p class="message-txt">{{item.message}}</p>
+                            <div class="message-time">*placeholder*</div>
+                        </div>
+                    </div>
+                </section>
+                <!-- /main-section-central-section -->
+                <!-- main-footer -->
+                <footer id="footer-main">
+                    sadasdas
+
+                </footer>
             </main>
             <!-- /main section -->
         </div>

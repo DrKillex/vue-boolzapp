@@ -145,8 +145,53 @@ li {
 /* main-section */
 
 #main-section {
-    background-color: pink;
     height: 100%;
     width: 65%;
     flex-direction: column;
+}
+
+#central-section {
+    background-image: url(../../img/mine.jpg);  
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+#central-section-container {
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+    padding: 40px;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.message-box {
+    background-color: aqua;
+    width: 280px;
+    border-radius: 10px;
+}
+
+.message-txt {
+    padding: 20px 15px;
+    padding-top: 10px;
+}
+
+.message-time {
+    margin-left: auto;
+    align-self: flex-end;
+    padding: 3px;
+}
+
+.sent {
+    background-color: #d5f9ba;
+    align-self: flex-end;
+}
+
+.received {
+    background-color: white;
+}
+
+#footer-main{
+    height: 40px;
+    background-color: aqua;
 }
