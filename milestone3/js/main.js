@@ -6,6 +6,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            messageText: '',
             currentChat: 0,
             user: {
                 name: 'Sofia',
@@ -182,5 +183,14 @@ createApp({
             this.currentChat = index
             console.log(index)
         },
-    }
+        sendMessage(){
+            if(this.messageText.trim() !== ''){
+                this.contacts[this.currentChat].messages.push({date: '10/01/2020 15:51:00', message: this.messageText, status: 'sent'})
+                this.messageText = ''
+            }
+            setTimeout(() => {
+                this.contacts[this.currentChat].messages.push({date: '10/01/2020 15:51:00', message: 'ok', status: 'received'})
+            }, 3000);
+        },
+    },
 }).mount('#app')

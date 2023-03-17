@@ -120,7 +120,7 @@
                         <i class="fa-regular fa-face-smile"></i>
                     </div>
                     <div class="search-bar-div d-flex">
-                        <input type="text" placeholder="Cerca o inizia una chat" id="text-bar">
+                        <input type="text" placeholder="Scrivi un messaggio" id="text-bar" v-model="messageText" @keyup.enter="sendMessage()">
                     </div>
                     <div class="microphone">
                         <i class="fa-solid fa-microphone"></i>
