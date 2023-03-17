@@ -178,6 +178,9 @@ createApp({
         }
     },
     methods: {
-        
+        activeChat(index){
+            this.currentChat = index
+            console.log(index)
+        },
     }
 }).mount('#app')

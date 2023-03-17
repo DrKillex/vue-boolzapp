@@ -62,7 +62,7 @@
                 </div>
                 <ul class="contacts-list d-flex">
                     <!-- ciclo vfor elemento lista -->
-                    <li v-for="(contact, index) in contacts" :class="{'active-chat' : currentChat===index}">
+                    <li v-for="(contact, index) in contacts" :class="{'active-chat' : currentChat===index}"  @click="activeChat(index)">
                         <div class="d-flex contact-content">
                             <div class="contact-img">
                                 <img :src="contact.avatar" alt="contact.name">
