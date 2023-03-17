@@ -170,7 +170,7 @@ i {
 }
 
 #central-section {
-    background-image: url(../../img/mine.jpg);  
+    background-image: url(../img/mine.jpg);  
     flex-grow: 1;
     overflow-y: auto;
 }
