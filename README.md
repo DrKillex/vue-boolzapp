@@ -49,6 +49,9 @@ l’utente scrive un testo nella parte bassa e digitando “enter” il testo vi
 ## todo
 
 milestone5
+
 cercare una soluzione per il problema 1
+
 aggiungere sistemi di orari dinamici
+
 completare il readme con le funzionalita
