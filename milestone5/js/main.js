@@ -11,7 +11,7 @@ createApp({
             currentChat: 0,
             currentMessage: null,
             messageMenuStatus: false,
-            dateTime : '',
+            dateTime: '',
             user: {
                 name: 'Sofia',
                 avatar: 'img/avatar_io.jpg',

@@ -75,6 +75,10 @@ i {
     display: block;
 }
 
+.contact-content, i, .message-options-menu > div {
+    cursor: pointer;
+}
+
 /* side-navbar */
 
 #side-navbar {
