@@ -9,6 +9,9 @@ createApp({
             searchText: '',
             messageText: '',
             currentChat: 0,
+            currentMessage: null,
+            messageMenuStatus: false,
+            dateTime : '',
             user: {
                 name: 'Sofia',
                 avatar: 'img/avatar_io.jpg',
@@ -185,12 +188,13 @@ createApp({
             console.log(index)
         },
         sendMessage(){
+            this.dateTime = luxon.DateTime.local().setLocale('it');
             if(this.messageText.trim() !== ''){
-                this.search()[this.currentChat].messages.push({date: '10/01/2020 15:51:00', message: this.messageText, status: 'sent'})
+                this.search()[this.currentChat].messages.push({date: this.dateTime, message: this.messageText, status: 'sent'})
                 this.messageText = ''
             }
             setTimeout(() => {
-                this.search()[this.currentChat].messages.push({date: '10/01/2020 15:51:00', message: 'ok', status: 'received'})
+                this.search()[this.currentChat].messages.push({date: this.dateTime, message: 'ok', status: 'received'})
             }, 1000);
         },
         search(){            
@@ -199,6 +203,22 @@ createApp({
             } else {
                 return this.contacts
             }
-        }
-    },
+        },
+        isVisible(index){
+            this.currentMessage = index
+        },
+        isNotVisible(index){
+            this.currentMessage = null           
+        },
+        messageMenuVisibility(){
+            if (this.messageMenuStatus === false){
+                this.messageMenuStatus = true
+            } else {
+                this.messageMenuStatus = false
+            }
+        },
+        remover(index){
+            this.search()[this.currentChat].messages.splice(index, 1);
+        },
+    },  
 }).mount('#app')

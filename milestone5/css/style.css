@@ -67,6 +67,14 @@ i {
     color: #b1b1b1;
 }
 
+.d-none {
+    display: none;
+}
+
+.d-block {
+    display: block;
+}
+
 /* side-navbar */
 
 #side-navbar {
@@ -193,6 +201,35 @@ i {
     background-color: aqua;
     width: 300px;
     border-radius: 10px;
+    position: relative;
+}
+
+.message-time {
+    font-size: 12px;
+    font-weight: 300;
+    color: #b8b6b7;
+}
+
+.message-options {
+    position: absolute;
+    right: 0;
+    top: 0;   
+    z-index: 10;
+}
+
+.message-options-icon {
+    text-align: end;
+    padding: 5px;
+}
+
+.message-options-menu {
+    padding: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 4px 1px gray;
+}
+
+.message-options-menu > div {
+    padding: 10px;
 }
 
 .message-txt {

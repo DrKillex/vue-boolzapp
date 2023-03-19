@@ -72,7 +72,7 @@
                                 <div class="contact-access">Ultimo messaggio inviato</div>
                             </div>
                             <div class="contact-time">
-                                12.00
+                                {{contact.messages[contact.messages.length - 1].date.toLocaleString({hour: 'numeric', minute: '2-digit'})}}
                             </div>
                         </div>
                     </li>
@@ -84,12 +84,22 @@
             <main id="main-section" class="d-flex">
                 <!-- main-header -->
                 <header class="header d-flex" id="header-main">
-                    <div class="contact-img">
-                        <img :src="search()[currentChat].avatar" alt="search()[currentChat].name">
-                    </div>                            
-                    <div class="contact-info">
-                        <div class="contact-name">{{search()[currentChat].name}}</div>
-                        <div class="contact-access">Ultimo messaggio inviato</div>
+                    <div class="contact-info-header d-flex align-items-center" v-if="search().length > 0">
+                        <div class="contact-img">
+                            <img :src="search()[currentChat].avatar" alt="search()[currentChat].name">
+                        </div>                            
+                        <div class="contact-info">
+                            <div class="contact-name">{{search()[currentChat].name}}</div>
+                            <div class="contact-access">Ultimo accesso oggi alle 12.00</div>
+                        </div>
+                    </div>
+                    <div class="contact-info-header d-flex align-items-center" v-else>
+                        <div class="contact-img">
+                            <img src="img/avatar_io.jpg" alt="my pic">
+                        </div>                            
+                        <div class="contact-info">
+                            <div class="contact-name">Nessun contatto selezionato</div>
+                        </div>
                     </div>
                     <div class="contact-time d-flex header-btns">
                         <div>
@@ -107,10 +117,22 @@
                 <!-- main-section-central-section -->
                 <section id="central-section">
                     <div id="central-section-container" class="d-flex">
-                        <div class="message-box d-flex" v-for="(item, index) in search()[currentChat].messages" :class="item.status">
-                            <p class="message-txt">{{item.message}}</p>
-                            <div class="message-time">*placeholder*</div>
-                        </div>
+                        <template v-if="search().length > 0">
+                            <div class="message-box d-flex" v-for="(item, index) in search()[currentChat].messages" :class="item.status" @mouseover="isVisible(index)" @mouseout="isNotVisible(index)">
+                                <p class="message-txt">{{item.message}}</p>
+                                <div class="message-time">{{item.date.toLocaleString({hour: 'numeric', minute: '2-digit'})}}</div>
+                                <div class="message-options d-none" :class="(currentMessage === index) ? 'd-block': '' ">
+                                    <div class="message-options-icon" @click="messageMenuVisibility()">
+                                        <i class="fa-solid fa-angle-down"></i>
+                                    </div>                                
+                                    <div class="message-options-menu d-none" :class="(messageMenuStatus === true) ? 'd-block': '' ">
+                                        <div class="message-options-info">Message info</div>
+                                        <div class="message-options-remover" @click="remover(index)">Delete message</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        
                     </div>
                 </section>
                 <!-- /main-section-central-section -->
@@ -134,6 +156,8 @@
     <!-- /container-backgrund -->
     <!-- vueJS -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- luxon -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
     <!-- myJS -->
     <script src="js/main.js"></script>
 </body>
