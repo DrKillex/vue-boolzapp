@@ -3,6 +3,9 @@
 
 const { createApp } = Vue
 
+
+
+
 createApp({
     data() {
         return {
@@ -208,12 +211,14 @@ createApp({
                 return this.contacts
             }
         },
+
         dateProcessor(index){
-            let currDate = new Date(this.contacts[this.currentChat].messages[index].date).toLocaleDateString('en-GB').toFormat('dd LL yyyy');
-            console.log("The current Date is:", currDate)
-            let hoursMin = ddmmFormat.toLocaleTimeString('eu-IT', {hour: '2-digit', minute: '2-digit',});
-            console.log("The hours and minutes from the current Date in am/pm format is:", hoursMin);
-            return hoursMin          
+            const currDate = moment(this.contacts[this.currentChat].messages[index].date, 'dd/MM/yyyy').format('hh:mm');
+
+            
+            console.log(currDate);
+   
+            return currDate          
         },
         isVisible(index){
             this.currentMessage = index
