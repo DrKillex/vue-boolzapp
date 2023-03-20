@@ -194,14 +194,14 @@ createApp({
             }
         },
         sendMessage(){
-            const risposta = this.currentChat
-            this.dateTime = luxon.DateTime.local().setLocale('it');
+            const risposta = this.search()[this.currentChat]
+            this.dateTime = moment(new Date());
             if(this.messageText.trim() !== ''){
-                this.search()[this.currentChat].messages.push({date: this.dateTime, message: this.messageText, status: 'sent'})
+                this.search()[risposta].messages.push({date: this.dateTime, message: this.messageText, status: 'sent'})
                 this.messageText = ''
             }
             setTimeout(() => {
-                this.search()[risposta].messages.push({date: this.dateTime, message: 'ok', status: 'received'})
+                this.search()[this.currentChat].messages.push({date: this.dateTime, message: 'ok', status: 'received'})
             }, 1000);
         },
         search(){            
@@ -211,13 +211,13 @@ createApp({
                 return this.contacts
             }
         },
-
         dateProcessor(index){
-            const currDate = moment(this.contacts[this.currentChat].messages[index].date, 'dd/MM/yyyy').format('hh:mm');
-
-            
-            console.log(currDate);
-   
+            const currDate = moment(this.contacts[this.currentChat].messages[index].date, 'dd/MM/yyyy, HH:mm:ss').format('HH:mm');            
+            return currDate          
+        },
+        dateProcessorCard(index){
+            const currDate = moment(this.contacts[index].messages[this.contacts[index].messages.length - 1].date, 'dd/MM/yyyy, HH:mm:ss').format('HH:mm');           
+            console.log(currDate);  
             return currDate          
         },
         isVisible(index){
