@@ -107,6 +107,7 @@ i {
 
 .contact-content {
     padding: 5px 10px;
+    border-bottom: 1px solid #EAEAEA;
 }
 
 .contact-time {

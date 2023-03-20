@@ -184,17 +184,21 @@ createApp({
     },
     methods: {
         activeChat(index){
-            this.currentChat = index
-            console.log(index)
+            if(this.currentChat === ''){
+                this.currentChat = index
+            } else {
+                this.currentChat = (this.contacts.indexOf(this.search()[index]))
+            }
         },
         sendMessage(){
+            const risposta = this.currentChat
             this.dateTime = luxon.DateTime.local().setLocale('it');
             if(this.messageText.trim() !== ''){
                 this.search()[this.currentChat].messages.push({date: this.dateTime, message: this.messageText, status: 'sent'})
                 this.messageText = ''
             }
             setTimeout(() => {
-                this.search()[this.currentChat].messages.push({date: this.dateTime, message: 'ok', status: 'received'})
+                this.search()[risposta].messages.push({date: this.dateTime, message: 'ok', status: 'received'})
             }, 1000);
         },
         search(){            
@@ -203,6 +207,13 @@ createApp({
             } else {
                 return this.contacts
             }
+        },
+        dateProcessor(index){
+            let currDate = new Date(this.contacts[this.currentChat].messages[index].date).toLocaleDateString('en-GB').toFormat('dd LL yyyy');
+            console.log("The current Date is:", currDate)
+            let hoursMin = ddmmFormat.toLocaleTimeString('eu-IT', {hour: '2-digit', minute: '2-digit',});
+            console.log("The hours and minutes from the current Date in am/pm format is:", hoursMin);
+            return hoursMin          
         },
         isVisible(index){
             this.currentMessage = index
@@ -216,6 +227,9 @@ createApp({
             } else {
                 this.messageMenuStatus = false
             }
+        },
+        messageMenuVisibilityclose(){
+            this.messageMenuStatus = false
         },
         remover(index){
             this.search()[this.currentChat].messages.splice(index, 1);

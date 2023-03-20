@@ -84,23 +84,23 @@
             <main id="main-section" class="d-flex">
                 <!-- main-header -->
                 <header class="header d-flex" id="header-main">
-                    <div class="contact-info-header d-flex align-items-center" v-if="search().length > 0">
+                    <div class="contact-info-header d-flex align-items-center">
                         <div class="contact-img">
-                            <img :src="search()[currentChat].avatar" alt="search()[currentChat].name">
+                            <img :src="contacts[currentChat].avatar" alt="contacts[currentChat].name">
                         </div>                            
                         <div class="contact-info">
-                            <div class="contact-name">{{search()[currentChat].name}}</div>
+                            <div class="contact-name">{{contacts[currentChat].name}}</div>
                             <div class="contact-access">Ultimo accesso oggi alle 12.00</div>
                         </div>
                     </div>
-                    <div class="contact-info-header d-flex align-items-center" v-else>
+                    <!-- <div class="contact-info-header d-flex align-items-center" v-else>
                         <div class="contact-img">
                             <img src="img/avatar_io.jpg" alt="my pic">
                         </div>                            
                         <div class="contact-info">
                             <div class="contact-name">Nessun contatto selezionato</div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="contact-time d-flex header-btns">
                         <div>
                             <i class="fa-solid fa-circle-notch"></i>
@@ -118,14 +118,14 @@
                 <section id="central-section">
                     <div id="central-section-container" class="d-flex">
                         <template v-if="search().length > 0">
-                            <div class="message-box d-flex" v-for="(item, index) in search()[currentChat].messages" :class="item.status" @mouseover="isVisible(index)" @mouseout="isNotVisible(index)">
+                            <div class="message-box d-flex" v-for="(item, index) in contacts[currentChat].messages" :class="item.status" @mouseover="isVisible(index)" @mouseout="isNotVisible(index)">
                                 <p class="message-txt">{{item.message}}</p>
-                                <div class="message-time">{{item.date.toLocaleString({hour: 'numeric', minute: '2-digit'})}}</div>
+                                <div class="message-time">{{dateProcessor(index)}}</div>
                                 <div class="message-options d-none" :class="(currentMessage === index) ? 'd-block': '' ">
-                                    <div class="message-options-icon" @click="messageMenuVisibility()">
+                                    <div class="message-options-icon" @click.prevent="messageMenuVisibility()">
                                         <i class="fa-solid fa-angle-down"></i>
                                     </div>                                
-                                    <div class="message-options-menu d-none" :class="(messageMenuStatus === true) ? 'd-block': '' ">
+                                    <div class="message-options-menu d-none" @mouseleave.prevent="messageMenuVisibilityclose()" :class="(messageMenuStatus === true) ? 'd-block': '' " >
                                         <div class="message-options-info">Message info</div>
                                         <div class="message-options-remover" @click="remover(index)">Delete message</div>
                                     </div>
